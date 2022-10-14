@@ -5,7 +5,7 @@ class ListsController < ApplicationController
   
   def crate
     # データの受け取り、新規作成するためのインスタンスの作成
-    list = List.new(list_params)
+    list = List.new(list_params)  
     # データの受け取りを保存するためのsaveメソッド
     list.save
     # トップ画面に移動
