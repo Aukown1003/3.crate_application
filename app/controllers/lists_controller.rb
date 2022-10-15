@@ -3,13 +3,15 @@ class ListsController < ApplicationController
     @list = List.new
   end
 
-  def crate
+  def create
     # データの受け取り、新規作成するためのインスタンスの作成
-    list = List.new(list_params)
+    @list = List.new(list_params)
     # データの受け取りを保存するためのsaveメソッド
-    list.save
-    # トップ画面に移動
-    redirect_to list_path(list.id)
+    if @list.save
+     redirect_to list_path(@list.id) # トップ画面に移動
+    else
+     render :new
+    end
   end
 
   def index
@@ -27,9 +29,9 @@ class ListsController < ApplicationController
   def update
     list = List.find(params[:id])
     list.update(list_params)
-    redirect_to list_path(list.id)  
+    redirect_to list_path(list.id)
   end
-  
+
   def destroy
     list = List.find(params[:id])
     list.destroy
