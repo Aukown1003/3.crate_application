@@ -10,7 +10,8 @@ class ListsController < ApplicationController
     if @list.save
      redirect_to list_path(@list.id) # トップ画面に移動
     else
-     render :inde
+     @lists = List.all
+     render :index
     end
   end
 
