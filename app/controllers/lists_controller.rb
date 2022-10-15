@@ -21,6 +21,7 @@ class ListsController < ApplicationController
   end
 
   def edit
+    
   end
 
   private
